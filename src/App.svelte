@@ -43,7 +43,7 @@
 <main>
 	<header class="py-5">
 		<div class="title my-2 mb-4">
-			<h1 class="title-text my-0 me-3"><strong>Basic Restaurant</strong></h1>
+			<h1 class="title-text my-0 me-3"><strong>Test Website</strong></h1>
 			<img class="logo-image" src="favicon.png" alt="Rigatini">
 		</div>
 		<h4 class="phone-number"><a href="tel:4692586258">(469) 258-6258</a></h4>
@@ -54,13 +54,16 @@
 	</header>
 	<div class="p-3 content">
 		<div class="section-label">
-			<button class="sl-left-arrow" on:click={() => {sectionScroll(-1)}}>
+			<!--Left and right arrows <button class="sl-left-arrow" on:click={() => {sectionScroll(-1)}}>
 				<img src="./images/simple-arrow-left.png" alt="left arrow"/>
 			</button>
 			<button class="sl-right-arrow" on:click={() => {sectionScroll(1)}}>
 				<img src="./images/simple-arrow-right.png" alt="right arrow"/>
+			</button>-->
+			<img src="./images/giphy.webp" alt="Click Gif"/>
+			<button on:click={() => {sectionScroll(1)}}>
+				<h1 class="section-title">{sectionTitleList[section]}</h1>
 			</button>
-			<h1 class="section-title">{sectionTitleList[section]}</h1>
 		</div>
 		{#if section == 0}
 			<Menu menuData={menuData}/>
@@ -146,11 +149,35 @@
 	}
 
 	.section-label {
+		position: relative;
 		margin:0;
 		margin-bottom: 15px;
 	}
+	.section-label > button {
+		padding: none;
+		width: 100%;
+		background: none;
+		border: none;
+	}
+	.section-label > img {
+		position: absolute;
+		left: 60%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 75px;
+	}
 
-	.sl-left-arrow{
+	.section-title {
+		border-bottom: 1px solid black;
+		padding: 0px 0px 20px 0px !important;
+		margin-bottom: none !important;
+	}
+	.section-title:hover {
+		background: rgba(220, 219, 168, 0.4);
+		transition: .3s all;
+	}
+
+	/* .sl-left-arrow{
 		position: absolute;
 		left: 10%;
 		padding: 25px 125px 25px 125px;
@@ -160,12 +187,7 @@
 		position: absolute;
 		right: 10%;
 		padding: 25px 125px 25px 125px;
-	}
-
-	.section-title {
-		border-bottom: 1px solid black;
-		padding: 0px 0px 20px 0px !important;
-	}
+	} */
 
 	 /*menu takes up not the whole screen on larger window*/
 	 @media (max-width: 1649px) {
