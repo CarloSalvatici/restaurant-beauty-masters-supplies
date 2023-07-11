@@ -10,7 +10,7 @@
 
 	let menuData = localMenuData
 	let galleryData = []
-	console.log(menuData)
+	let showClickGif = false;
 
 	onMount(async () => {
 		try {
@@ -22,7 +22,17 @@
 		} catch(err) {
 			console.log(err)
 		}
+		setTimeout(() => {gifLoop()}, 5000)
 	})
+	let loopCount = 0
+	async function gifLoop() {
+		showClickGif = true;
+		setTimeout(() => {showClickGif = false;}, 3500)
+		if(loopCount <= 1) {
+			loopCount += 1
+			setTimeout(() => {gifLoop()}, 15000)
+		}
+	}
 
 	// This function controls the scrolling between menu and gallery
 	let section = 0
@@ -41,7 +51,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-	<header class="py-5">
+	<header class="pt-5 px-1">
 		<div class="title my-2 mb-4">
 			<h1 class="title-text my-0 me-3"><strong>Test Website</strong></h1>
 			<img class="logo-image" src="favicon.png" alt="Rigatini">
@@ -51,8 +61,20 @@
 			<h4 class=""><a target="_blank" and rel="noopener noreferrer" href="https://goo.gl/maps/RU3PW9xjWJwV444F7">1234 SW 1st St, Gainesville, FL</a></h4>
 		</address>
 		<h4 class="">Dine In or Carry Out from 11:00AM - 9:00PM</h4>
+		<nav class="mt-5">
+			{#if section != 3}
+				<button>
+					<h3 class="p-2 mb-0">Menu</h3>
+				</button>
+			{/if}
+			{#if section != 3}
+				<button>
+					<h3 class="p-2 mb-0">Gallery</h3>
+				</button>
+			{/if}
+		</nav>
 	</header>
-	<div class="p-3 content">
+	<div class="px-3 pb-3 content">
 		<div class="section-label">
 			<!--Left and right arrows <button class="sl-left-arrow" on:click={() => {sectionScroll(-1)}}>
 				<img src="./images/simple-arrow-left.png" alt="left arrow"/>
@@ -60,7 +82,9 @@
 			<button class="sl-right-arrow" on:click={() => {sectionScroll(1)}}>
 				<img src="./images/simple-arrow-right.png" alt="right arrow"/>
 			</button>-->
-			<img src="./images/giphy.webp" alt="Click Gif"/>
+			{#if showClickGif}
+				<img src="./images/giphy.webp" alt="Click Gif"/>
+			{/if}
 			<button on:click={() => {sectionScroll(1)}}>
 				<h1 class="section-title">{sectionTitleList[section]}</h1>
 			</button>
@@ -126,6 +150,20 @@
 		margin: auto;
 	}
 
+	nav {
+		display: flex;
+		justify-content: space-evenly;
+		border-top: 1px solid #F3F3F3;
+	}
+
+	nav > button {
+		background: none;
+		border: none;
+	}
+	nav > button > h3 {
+		color: #F3F3F3;
+	}
+
 	.title-text {
 		display: inline-block;
 		vertical-align: middle;
@@ -169,7 +207,7 @@
 
 	.section-title {
 		border-bottom: 1px solid black;
-		padding: 0px 0px 20px 0px !important;
+		padding: 16px 0px 20px 0px !important;
 		margin-bottom: none !important;
 	}
 	.section-title:hover {
