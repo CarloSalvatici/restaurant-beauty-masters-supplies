@@ -2,15 +2,16 @@
 	import axios from "axios"
 	import { onMount } from 'svelte'
 	import localMenuData from '../public/menuData.json';
+	import localAboutData from '../public/aboutData.json';
 	import Menu from './sections/Menu.svelte'
 	import Gallery from './sections/Gallery.svelte'
+	import About from './sections/About.svelte'
 
-	$: innerWidth = 0
 	const url = 'https://carlo-web.herokuapp.com/api/accounts'
 
 	let menuData = localMenuData
 	let galleryData = []
-	let showClickGif = false;
+	let aboutData = localAboutData
 
 	onMount(async () => {
 		try {
@@ -22,33 +23,18 @@
 		} catch(err) {
 			console.log(err)
 		}
-		setTimeout(() => {gifLoop()}, 5000)
 	})
-	let loopCount = 0
-	async function gifLoop() {
-		showClickGif = true;
-		setTimeout(() => {showClickGif = false;}, 3500)
-		if(loopCount <= 1) {
-			loopCount += 1
-			setTimeout(() => {gifLoop()}, 15000)
-		}
-	}
 
-	// This function controls the scrolling between menu and gallery
-	let section = 0
-	let sectionCount = 2
-	let sectionTitleList = ["Menu", "Gallery"]
-	// Direction should be 1 for right and -1 for left
-	const sectionScroll = (direction) => {
-		section += direction
-		// Absolute value of section mod sectionCount so that the scroll loops around properly
-		section = Math.abs(section%sectionCount)
-		console.log(section)
+	let sections = {
+		"About": 0,
+		"Menu": 0,
+		"Gallery": 0
+	}
+	const scrollToSection = (s) => {
+		sections[s]
 	}
 
 </script>
-
-<svelte:window bind:innerWidth />
 
 <main>
 	<header class="pt-5 px-1">
@@ -62,39 +48,23 @@
 		</address>
 		<h4 class="">Dine In or Carry Out from 11:00AM - 9:00PM</h4>
 		<nav class="mt-5">
-			{#if section != 3}
-				<button>
-					<h3 class="p-2 mb-0">Menu</h3>
-				</button>
-			{/if}
-			{#if section != 3}
-				<button>
-					<h3 class="p-2 mb-0">Gallery</h3>
-				</button>
-			{/if}
+			<button on:click={() => {scrollToSection("Menu")}}>
+				<h3 class="p-2 mb-0">Menu</h3>
+			</button>
+			<button on:click={() => {scrollToSection("Gallery")}}>
+				<h3 class="p-2 mb-0">Gallery</h3>
+			</button>
 		</nav>
 	</header>
 	<div class="px-3 pb-3 content">
 		<div class="section-label">
-			<!--Left and right arrows <button class="sl-left-arrow" on:click={() => {sectionScroll(-1)}}>
-				<img src="./images/simple-arrow-left.png" alt="left arrow"/>
-			</button>
-			<button class="sl-right-arrow" on:click={() => {sectionScroll(1)}}>
-				<img src="./images/simple-arrow-right.png" alt="right arrow"/>
-			</button>-->
-			{#if showClickGif}
-				<img src="./images/giphy.webp" alt="Click Gif"/>
-			{/if}
-			<button on:click={() => {sectionScroll(1)}}>
-				<h1 class="section-title">{sectionTitleList[section]}</h1>
-			</button>
+			
 		</div>
-		{#if section == 0}
-			<Menu menuData={menuData}/>
-		{/if}
-		{#if section == 1}
-			<Gallery galleryData={galleryData}/>
-		{/if}
+		<About aboutData={aboutData}/>
+		<h1 class="section-title">Menu</h1>
+		<Menu menuData={menuData}/>
+		<h1 class="section-title"></h1>
+		<Gallery galleryData={galleryData}/>
 	</div>
 </main>
 
@@ -163,6 +133,10 @@
 	nav > button > h3 {
 		color: #F3F3F3;
 	}
+	nav > button:hover {
+		background: rgba(255, 255, 255, 0.192);
+		transition: .1s all;
+	}
 
 	.title-text {
 		display: inline-block;
@@ -191,41 +165,14 @@
 		margin:0;
 		margin-bottom: 15px;
 	}
-	.section-label > button {
-		padding: none;
-		width: 100%;
-		background: none;
-		border: none;
-	}
-	.section-label > img {
-		position: absolute;
-		left: 60%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 75px;
-	}
 
 	.section-title {
 		border-bottom: 1px solid black;
 		padding: 16px 0px 20px 0px !important;
 		margin-bottom: none !important;
 	}
-	.section-title:hover {
-		background: rgba(220, 219, 168, 0.4);
-		transition: .3s all;
-	}
 
-	/* .sl-left-arrow{
-		position: absolute;
-		left: 10%;
-		padding: 25px 125px 25px 125px;
-	}
 
-	.sl-right-arrow{
-		position: absolute;
-		right: 10%;
-		padding: 25px 125px 25px 125px;
-	} */
 
 	 /*menu takes up not the whole screen on larger window*/
 	 @media (max-width: 1649px) {
@@ -241,42 +188,15 @@
 	}
 	/* Below 1250px*/
 	@media (max-width: 1250px) {
-		.sl-left-arrow{
-			position: absolute;
-			left: 0;
-			padding: 25px 100px 25px 100px;
-		}
-		.sl-right-arrow{
-			position: absolute;
-			right: 0;
-			padding: 25px 100px 25px 100px;
-		}
+
 	}
 	/* Below 800px*/
 	@media (max-width: 800px) {
-		.sl-left-arrow{
-			position: absolute;
-			left: 0;
-			padding: 25px 50px 25px 50px;
-		}
-		.sl-right-arrow{
-			position: absolute;
-			right: 0;
-			padding: 25px 50px 25px 50px;
-		}
+
 	}
 
 	/* Below 600px */
 	@media (max-width: 600px) {
-		.sl-left-arrow{
-			position: absolute;
-			left: 0;
-			padding: 25px;
-		}
-		.sl-right-arrow{
-			position: absolute;
-			right: 0;
-			padding: 25px;
-		}
+
 	}
 </style>
