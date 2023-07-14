@@ -9,7 +9,7 @@
 	})
     
     const scrollParagraph = () => {
-        console.log("YOYOYO")
+        console.log("YOYOYOYo")
         about_txt.style.transform = translateY(scrollY*.2)
     }
 </script>
