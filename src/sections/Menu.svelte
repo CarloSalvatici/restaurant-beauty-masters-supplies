@@ -20,7 +20,7 @@
 <svelte:window bind:innerWidth />
 
 <main>
-    <div class="menu">
+    <div id="menu" class="menu">
         <div class="menu-category-titles">
             {#if innerWidth < 700}
                 <button class="mc-toggle py-1 px-3" on:click={mcToggle}>

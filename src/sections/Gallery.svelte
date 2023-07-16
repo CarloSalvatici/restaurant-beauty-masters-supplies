@@ -13,7 +13,7 @@
 </script>
 
 <main>
-    <div class="gallery">
+    <div id="gallery" class="gallery">
 		<!--Main loop for showing the list of images-->
         {#each galleryData as imageData}
             <button on:click={() => {enlargeImage(imageData)}} class="gallery-image">

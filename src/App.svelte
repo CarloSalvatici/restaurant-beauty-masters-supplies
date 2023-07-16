@@ -6,12 +6,16 @@
 	import Menu from './sections/Menu.svelte'
 	import Gallery from './sections/Gallery.svelte'
 	import About from './sections/About.svelte'
+	import Lower from './sections/Lower.svelte'
 
 	const url = 'https://carlo-web.herokuapp.com/api/accounts'
+
+	let scrollY
 
 	let menuData = localMenuData
 	let galleryData = []
 	let aboutData = localAboutData
+	let navStickyPos = 1000;
 
 	onMount(async () => {
 		try {
@@ -23,18 +27,18 @@
 		} catch(err) {
 			console.log(err)
 		}
+		navStickyPos = document.getElementById("nav").offsetTop
 	})
 
-	let sections = {
-		"About": 0,
-		"Menu": 0,
-		"Gallery": 0
-	}
-	const scrollToSection = (s) => {
-		sections[s]
+	const scrollToSection = (id) => {
+		console.log(id)
+		scrollY = document.getElementById(id).offsetTop - 140
 	}
 
 </script>
+
+<svelte:window bind:scrollY={scrollY}/>
+
 
 <main>
 	<header class="pt-5 px-1">
@@ -47,16 +51,22 @@
 			<h4 class=""><a target="_blank" and rel="noopener noreferrer" href="https://goo.gl/maps/RU3PW9xjWJwV444F7">1234 SW 1st St, Gainesville, FL</a></h4>
 		</address>
 		<h4 class="">Dine In or Carry Out from 11:00AM - 9:00PM</h4>
-		<nav class="mt-5">
-			<button on:click={() => {scrollToSection("Menu")}}>
+		<nav id="nav" class="mt-5 {scrollY >= navStickyPos ? 'sticky' : ''}">
+			<button on:click={() => {scrollToSection("about")}}>
+				<h3 class="p-2 mb-0">About</h3>
+			</button>
+			<button on:click={() => {scrollToSection("menu")}}>
 				<h3 class="p-2 mb-0">Menu</h3>
 			</button>
-			<button on:click={() => {scrollToSection("Gallery")}}>
+			<button on:click={() => {scrollToSection("gallery")}}>
 				<h3 class="p-2 mb-0">Gallery</h3>
+			</button>
+			<button on:click={() => {scrollToSection("lower")}}>
+				<h3 class="p-2 mb-0">Map</h3>
 			</button>
 		</nav>
 	</header>
-	<div class="px-3 pb-3 content">
+	<div class="px-3 pb-3 content {scrollY >= navStickyPos ? 'sticky-content-padding' : ''}">
 		<div class="section-label">
 			
 		</div>
@@ -65,6 +75,8 @@
 		<Menu menuData={menuData}/>
 		<h1 class="section-title"></h1>
 		<Gallery galleryData={galleryData}/>
+		<h1 class="section-title"></h1>
+		<Lower />
 	</div>
 </main>
 
@@ -124,6 +136,7 @@
 		display: flex;
 		justify-content: space-evenly;
 		border-top: 1px solid #F3F3F3;
+		z-index: 10;
 	}
 
 	nav > button {
@@ -137,6 +150,16 @@
 		background: rgba(255, 255, 255, 0.192);
 		transition: .1s all;
 	}
+	/* .sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		background: black;
+	}
+	.sticky-content-padding {
+		padding-top: calc(47px + 2.5em);
+	} */
 
 	.title-text {
 		display: inline-block;
