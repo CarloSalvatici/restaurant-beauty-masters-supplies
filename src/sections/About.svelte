@@ -11,7 +11,6 @@
 	})
     
     const scrollParagraph = () => {
-        console.log(scrollY)
         about_txt.style.transform = "translatex(-30px) translateY(" + (scrollY*(-.25) + 100) + "px)"
     }
 </script>

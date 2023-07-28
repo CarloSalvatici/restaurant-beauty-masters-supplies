@@ -1,6 +1,20 @@
 <script>
     export let galleryData
 
+	//Logic for organizing images
+	let showAdditionalImages = false
+	let images1 = []
+	let images2 = []
+	console.log(images2)
+	if(galleryData.length > 3) {
+		images1 = galleryData.slice(0, 3);
+		images2 = galleryData.slice(3, galleryData.length)
+	} else {
+		images1 = galleryData
+	}
+	
+	
+
 	let enlargeBool = false
 	let enlargedImage
 	const enlargeImage = (imageData) => {
@@ -10,17 +24,31 @@
 		}
 		enlargeBool = true
 	}
+
+	
 </script>
 
 <main>
     <div id="gallery" class="gallery">
-		<!--Main loop for showing the list of images-->
-        {#each galleryData as imageData}
+		<!--Preview for showing the list of images-->
+        {#each images1 as imageData}
             <button on:click={() => {enlargeImage(imageData)}} class="gallery-image">
 				<span>{imageData.name}</span>
                 <img src={imageData.URL} alt={imageData.name}/>
             </button>
         {/each}
+		{#if images2.length > 0}
+			{#if showAdditionalImages}
+				{#each images2 as imageData}
+					<button on:click={() => {enlargeImage(imageData)}} class="gallery-image">
+						<span>{imageData.name}</span>
+						<img src={imageData.URL} alt={imageData.name}/>
+					</button>
+				{/each}
+			{:else}
+				<button class="load-images" on:click={() => {showAdditionalImages = true}}>Load Additional Images</button>
+			{/if}
+		{/if}
 		<!--Code for the enlarged image when clicked-->
 		{#if enlargeBool}
 			<button on:click={() => {enlargeBool = false}} class="enlarged-image">
@@ -86,6 +114,10 @@
 		z-index: 2;
 	}
 
+	.load-images {
+		display: block;
+		margin: auto;
+	}
 
 	.enlarged-image {
 		position: fixed;
@@ -116,6 +148,19 @@
 	.enlarged-image > div {
 		color: white;
 		font-size: 1.5em;
+	}
+
+	.load-images:hover {
+		background: rgba(220, 219, 168, 0.4);
+		transition: .3s all;
+		cursor: pointer;
+	}
+
+	.load-images {
+		border: 2px black solid;
+		background: none;
+		width: fit-content;
+		margin: auto;
 	}
 
 </style>

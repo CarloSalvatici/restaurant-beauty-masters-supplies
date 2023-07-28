@@ -155,12 +155,12 @@
 	}
 
 	@media (min-width: 1398px) {
-		.mc-item{
+		.mc-item {
 			width: 400px;
 		}
 	}
 	@media (max-width: 1397px) {
-		.mc-item{
+		.mc-item {
 			width: 100%;
 		}
 	}
