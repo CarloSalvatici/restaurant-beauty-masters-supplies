@@ -40,7 +40,7 @@
 				scrollAnchor = scrollY
 				hideNav = true
 			} else {
-				if(scrollAnchor - scrollY > 140){
+				if(scrollAnchor - scrollY > 110){
 					hideNav = false
 				}
 			}
@@ -110,7 +110,7 @@
 				<img class="f-logo" src="favicon.png" alt="Rigatini">
 			</div>
 			<div>
-				<div>This restaurant is part of <i>SOULESS</i> of coorporation #168</div>
+				<div>This restaurant is part of coorporation #168</div>
 				<div>All transactions are final, so no takesies backsies</div>
 				<div class="f-link"><a href="tel:4692586258">(469) 258-6258</a></div>
 				<address class="m-0">
