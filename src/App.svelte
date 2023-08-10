@@ -228,7 +228,7 @@
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: center;
-		transform: translateX(-300px);
+		transform: translateX(-400px);
 		transition: .3s all;
 	}
 
