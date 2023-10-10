@@ -1,5 +1,5 @@
 <script>
-    export let aboutData
+    export let pageData
     import { onMount } from 'svelte'
 
     $: innerWidth = 0
@@ -21,8 +21,8 @@
     <div class="about p-2  {innerWidth <= 1100 ? 'mb-6' : ''}">
         <img class="about-img" src="images/italian-family.jpg" alt="gif"/>
         <div class="about-text p-3" id="about-scroll-id">
-            <h1 class="p-1"><i>Ciao!</i></h1>
-            <p>{aboutData.mainParagraph}</p>
+            <h1 class="p-1"><i>{pageData.aboutTitle}</i></h1>
+            <p>{pageData.aboutParagraph}</p>
         </div>
     </div>
 </main>

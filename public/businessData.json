@@ -1,0 +1,63 @@
+{
+    "pageData": {
+        "mainTitle": "Test Website",
+        "phoneNumber": "4692586258",
+        "phoneNumberFormatted": "(469) 358-6358",
+        "address": "1234 SW 1st St, Gainesville, FL",
+        "addressLink": "https://goo.gl/maps/RU3PW9xjWJwV444F7",
+        "businessHours": "Dine In or Carry Out from 10:00AM - 8:00PM, Closed Sunday",
+        "footerText": "This restaurant is part of coorporation #168. All transactions are final, so no takesies backsies.",
+        "aboutTitle": "Ciao!",
+        "aboutParagraph": "Open since 1913, this restaurant has been a staple of the community serving gourmet family recipes. Mr. Clark founded this restaurant 13 years ago, just kidding I already said it was founded in 1913 silly goose! Anyways, unfortunately he died 13 years ago, but his passion for cooking inspired his descendents who don't really care as much, but still care and do enough to run a decent restaurant."
+    },
+    "menu": [
+        {
+            "categoryTitle": "Appetizers",
+            "description": "",
+            "items": [
+                {
+                    "name": "Calamari",
+                    "description": "Crispy fried squid served with homemade marinara sauce.",
+                    "vegan": true,
+                    "price": "$8.99"
+                },
+                {
+                    "name": "Meatballs",
+                    "description": "Delicious homemade meatballs served with homemade marinara sauce topped with parmesan reggiano",
+                    "vegan": false,
+                    "price": "$8.99"
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Pasta",
+            "description": "Delicious homemade pasta",
+            "items": [
+                {
+                    "name": "Spagetti",
+                    "description": "Beautiful homemade spagetti served with homemade marinara sauce topped with parmesan reggiano",
+                    "vegan": false,
+                    "price": "$12.99"
+                },
+                {
+                    "name": "Penne Alfredo",
+                    "description": "Beautiful homemade penne served with homemade alfredo sauce topped with parmesan reggiano",
+                    "vegan": false,
+                    "price": "$13.99"
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Desert",
+            "description": "",
+            "items": [
+                {
+                    "name": "Tiramisu",
+                    "description": "It's like coffee cake",
+                    "vegan": false,
+                    "price": "$3.99"
+                }
+            ]
+        }
+    ]
+}

@@ -1,8 +1,7 @@
 <script>
 	import axios from "axios"
 	import { onMount } from 'svelte'
-	import localMenuData from '../public/menuData.json';
-	import localAboutData from '../public/aboutData.json';
+	import localBusinessData from '../public/businessData.json';
 	import Menu from './sections/Menu.svelte'
 	import Gallery from './sections/Gallery.svelte'
 	import About from './sections/About.svelte'
@@ -17,16 +16,16 @@
 	let scrollAnchor = 0
 	let hideNav = true
 
-	let menuData = localMenuData
+	let menu = localBusinessData.menu
 	let galleryData = []
-	let aboutData = localAboutData
+	let pageData = localBusinessData.pageData
 	let navStickyPos = 1000;
 	let loading = true;
 
 	onMount(async () => {
 		try {
 			let res = await axios.get(url, {params: {getType: "getBusinessDataOf", businessName: "Test Document"}})
-			menuData = res.data.businessData.menu
+			menu = res.data.businessData.menu
 			galleryData = res.data.businessData.gallery
 			console.log(res.data.msg)
 			loading = false
@@ -58,17 +57,17 @@
 <main>
 	<header class="pt-5 {scrollY >= navStickyPos ? 'sticky-header-padding' : ''}">
 		<div class="title my-2 mb-4">
-			<h1 class="title-text my-0 me-3"><strong>Test Website</strong></h1>
+			<h1 class="title-text my-0 me-3"><strong>{pageData.mainTitle}</strong></h1>
 			<img class="logo-image" src="favicon.png" alt="Rigatini">
 		</div>
-		<h4 class="phone-number"><a href="tel:4692586258">(469) 258-6258</a></h4>
+		<h4 class="phone-number"><a href="tel:{pageData.phoneNumber}">{pageData.phoneNumberFormatted}</a></h4>
 		<address>
-			<h4 class=""><a target="_blank" and rel="noopener noreferrer" href="https://goo.gl/maps/RU3PW9xjWJwV444F7">1234 SW 1st St, Gainesville, FL</a></h4>
+			<h4 class=""><a target="_blank" and rel="noopener noreferrer" href="{pageData.addressLink}">{pageData.address}</a></h4>
 		</address>
-		<h4 class="">Dine In or Carry Out from 11:00AM - 9:00PM</h4>
+		<h4 class="">{pageData.businessHours}</h4>
 		<nav id="nav" class="{scrollY >= navStickyPos ? 'sticky' : 'mt-5'} {scrollY >= navStickyPos+80 && hideNav ? 'hidden-nav' : ''}">
 			<div class="{scrollY >= navStickyPos && innerWidth > 550 ? 'n-label' : 'hidden-n-label'}">
-				<span class="n-title"><strong>Test Website</strong></span>
+				<span class="n-title"><strong>{pageData.mainTitle}</strong></span>
 				<img class="n-logo mx-1" src="favicon.png" alt="Rigatini">
 			</div>
 			<div class="n-buttons {scrollY >= navStickyPos && innerWidth > 550 ? 'n-buttons-shift' : ''} ">
@@ -91,9 +90,9 @@
 		<div class="section-label">
 			
 		</div>
-		<About aboutData={aboutData}/>
+		<About pageData={pageData}/>
 		<h1 class="section-title">Menu</h1>
-		<Menu menuData={menuData}/>
+		<Menu menu={menu}/>
 		<h1 class="section-title"></h1>
 		{#if !loading}
 			<Gallery galleryData={galleryData}/>
@@ -106,15 +105,14 @@
 	<footer>
 		<div class="footer-container">
 			<div>
-				<h2 class="f-title"><strong>Test Website</strong></h2>
+				<h2 class="f-title"><strong>{pageData.mainTitle}</strong></h2>
 				<img class="f-logo" src="favicon.png" alt="Rigatini">
 			</div>
 			<div>
-				<div>This restaurant is part of coorporation #168</div>
-				<div>All transactions are final, so no takesies backsies</div>
-				<div class="f-link"><a href="tel:4692586258">(469) 258-6258</a></div>
+				<div>{pageData.footerText}</div>
+				<div class="f-link"><a href="tel:{pageData.phoneNumber}">{pageData.phoneNumberFormatted}</a></div>
 				<address class="m-0">
-					<div class="f-link"><a target="_blank" and rel="noopener noreferrer" href="https://goo.gl/maps/RU3PW9xjWJwV444F7">1234 SW 1st St, Gainesville, FL</a></div>
+					<div class="f-link"><a target="_blank" and rel="noopener noreferrer" href="{pageData.addressLink}">{pageData.address}</a></div>
 				</address>
 			</div>
 		</div>

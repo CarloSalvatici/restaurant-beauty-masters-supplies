@@ -1,5 +1,5 @@
 <script>
-    export let menuData
+    export let menu
     
     $: innerWidth = 0
 
@@ -31,8 +31,8 @@
                 </button>
             {/if}
             {#if displayCategories == true || innerWidth > 699}
-                {#each menuData as data}
-                    <button class="mc-title p-1 pb-2 mt-1 {displayedCategory === menuData.indexOf(data) ? 'selected' : ''}" on:click={() => changeCategory(menuData.indexOf(data))}>
+                {#each menu as data}
+                    <button class="mc-title p-1 pb-2 mt-1 {displayedCategory === menu.indexOf(data) ? 'selected' : ''}" on:click={() => changeCategory(menu.indexOf(data))}>
                         <h2 class="mb-0">{data.categoryTitle}</h2>
                     </button>
                 {/each}
@@ -40,14 +40,14 @@
         </div>
         <div class="menu-category-contents">
             {#if innerWidth < 701}
-                <h2 class="mc-mobile-title pt-4 mb-0">{menuData[displayedCategory].categoryTitle}</h2>
+                <h2 class="mc-mobile-title pt-4 mb-0">{menu[displayedCategory].categoryTitle}</h2>
             {/if}
-            {#if menuData[displayedCategory].description != undefined && menuData[displayedCategory].description != ""}
-                <span>{menuData[displayedCategory].description}</span>
+            {#if menu[displayedCategory].description != undefined && menu[displayedCategory].description != ""}
+                <span>{menu[displayedCategory].description}</span>
                 <hr>
             {/if}
             <div class="mc-item-list">
-                {#each menuData[displayedCategory].items as data}
+                {#each menu[displayedCategory].items as data}
                         <div class="mc-item py-3">
                             <h3>{data.name}</h3>
                             <span>{data.description} {data.price}</span>
