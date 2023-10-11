@@ -118,13 +118,13 @@
 	}
 
 	.selected {
-		border: 1px #e60004 solid;
-		background: rgba(233, 186, 186, 0.4) !important;
+		border: 1px var(--ct-border-color) solid;
+		background: var(--ct-bg-color) !important;
 		font-weight: bold;
 	}
 
 	.mc-title:hover {
-		background: rgba(233, 186, 186, 0.4);
+		background: var(--ct-bg-color);
 		transition: .3s all;
 		cursor: pointer;
 	}
@@ -151,7 +151,6 @@
 		padding: 6px;
 		height: auto;
 		text-align: center;
-		border: 1px all black;
 	}
 
 	@media (min-width: 1398px) {

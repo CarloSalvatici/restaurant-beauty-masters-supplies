@@ -1,0 +1,30 @@
+:root {
+    --main-title-color: #e6c11d;
+    --ct-border-color: #e60004;
+    --ct-bg-color: rgba(233, 186, 186, 0.4);
+}
+
+@font-face{
+    font-family: thefontimusing;
+    src: url(../fonts/Manrope-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: thefontimusing;
+    src: url(../fonts/Manrope-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face{
+    font-family: titleFont;
+    src: url(../fonts/Volkhov-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: titleFont;
+    src: url(../fonts/Volkhov-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}

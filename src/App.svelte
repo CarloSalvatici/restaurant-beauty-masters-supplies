@@ -121,20 +121,6 @@
 
 <style>
 
-	
-	@font-face{
-		font-family: thefontimusing;
-		src: url(../fonts/Manrope-Regular.ttf);
-		font-weight: normal;
-		font-style: normal;
-	}
-	@font-face{
-		font-family: thefontimusing;
-		src: url(../fonts/Manrope-Bold.ttf);
-		font-weight: bold;
-		font-style: normal;
-	}
-
 	main {
 		text-align: center;
 		margin: 0 auto;
@@ -226,14 +212,14 @@
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: center;
-		transform: translateX(-300px);
+		transform: translateX(-700px);
 		transition: .3s all;
 	}
 
 	.n-title{
 		font-size:1.5em;
-		color: #e6c11d;
-		font-family:'Times New Roman', Times, serif;
+		color: var(--main-title-color);
+		font-family:titleFont;
 		white-space: nowrap;
 	}
 	.n-logo {
@@ -261,8 +247,8 @@
 	.title-text {
 		display: inline-block;
 		vertical-align: middle;
-		color: #e6c11d;
-		font-family:'Times New Roman', Times, serif;
+		color: var(--main-title-color);
+		font-family:titleFont;
 	}
     /*EF233C*/
 
@@ -299,8 +285,8 @@
 		justify-content: space-around;
 	}
 	.f-title{
-		color: #e6c11d;
-		font-family:'Times New Roman', Times, serif;
+		color: var(--main-title-color);
+		font-family:titleFont;
 	}
 	.f-logo {
 		width: 75px;
