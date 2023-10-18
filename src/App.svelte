@@ -12,6 +12,7 @@
 	let scrollY
 	let innerWidth
 
+	// Variables for hiding nav bar on scroll
 	let prevScroll = 0
 	let scrollAnchor = 0
 	let hideNav = true
@@ -19,20 +20,10 @@
 	let menu = localBusinessData.menu
 	let galleryData = []
 	let pageData = localBusinessData.pageData
-	let navStickyPos = 1000;
+	let navStickyPos = 100000;
 	let loading = true;
 
 	onMount(async () => {
-		try {
-			let res = await axios.get(url, {params: {getType: "getBusinessDataOf", businessName: "Test Document"}})
-			menu = res.data.businessData.menu
-			galleryData = res.data.businessData.gallery
-			console.log(res.data.msg)
-			loading = false
-
-		} catch(err) {
-			console.log(err)
-		}
 		navStickyPos = document.getElementById("nav").offsetTop
 		document.addEventListener("scroll", (event) => {
 			if(scrollY > prevScroll) {
@@ -45,6 +36,17 @@
 			}
 			prevScroll = scrollY
 		});
+		try {
+			let res = await axios.get(url, {params: {getType: "getBusinessDataOf", businessName: "Test Document"}})
+			menu = res.data.businessData.menu
+			galleryData = res.data.businessData.gallery
+			console.log(res.data.msg)
+			loading = false
+
+		} catch(err) {
+			console.log(err)
+		}
+		
 	})
 
 	const scrollToSection = (id) => {

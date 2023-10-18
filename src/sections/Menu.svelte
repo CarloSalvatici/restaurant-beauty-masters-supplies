@@ -1,7 +1,18 @@
 <script>
+	import { onMount } from 'svelte'
     export let menu
     
     $: innerWidth = 0
+
+	let mc_img
+	onMount(async () => {
+        mc_img = document.getElementById("mc-img-id")
+        document.addEventListener("scroll", scrollMcImg)
+	})
+    
+    const scrollMcImg = () => {
+        mc_img.style.transform = "translateX(-100px) translateY(" + (scrollY*(.25) - 300) + "px)"
+    }
 
     // This function is for toggling to show the list of selectable categories on mobile
 	let displayCategories = false
@@ -22,6 +33,9 @@
 <main>
     <div id="menu" class="menu">
         <div class="menu-category-titles">
+			<div class="mc-img">
+				<img id="mc-img-id" src="images/decorative/vine.png" alt="vine"/>
+			</div>
             {#if innerWidth < 700}
                 <button class="mc-toggle py-1 px-3" on:click={mcToggle}>
                     <h2 class="mt-2">
@@ -69,36 +83,39 @@
 		display: flex;
 	}
 
-
-	@media (max-width: 1499px){
-		.menu-category-titles {
-			min-width: 300px;
-			max-width: 300px;
-		}
-	}
-
-	@media (min-width: 1500px) {
-		.menu-category-titles {
-			min-width: 400px;
-			max-width: 400px;
-		}
+	.menu-category-titles {
+		position: relative;
 	}
 
 	.menu-category-contents {
 		flex-grow: 1;
 	}
 
+	.mc-img {
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+	}
+	.mc-img > img {
+		width: 150%;
+		transform: translateX(-100px);
+	}
+
 	.mc-toggle:hover {
-		background: rgba(220, 219, 168, 0.4);
+		background: var(--category-expand-bg-color-hover);
 		transition: .3s all;
 		cursor: pointer;
 	}
 
-	.mc-toggle {
+	.mc-toggle { 
+		position: relative;
 		border: 2px black solid;
 		background: none;
 		width: fit-content;
 		margin: auto;
+		z-index: 5;
 	}
 
 	.mc-expand {
@@ -108,13 +125,15 @@
 	}
 
 	.mc-title:nth-child(odd) {
-		background: #f7f7f7;
+		background: var(--mc-title-alternating-bg);
 	}
 
 	.mc-title {
+		position: relative;
 		display: block;
 		border: none;
 		background: none;
+		z-index: 5;
 	}
 
 	.selected {
@@ -151,6 +170,20 @@
 		padding: 6px;
 		height: auto;
 		text-align: center;
+	}
+
+	@media (max-width: 1499px){
+		.menu-category-titles {
+			min-width: 300px;
+			max-width: 300px;
+		}
+	}
+
+	@media (min-width: 1500px) {
+		.menu-category-titles {
+			min-width: 400px;
+			max-width: 400px;
+		}
 	}
 
 	@media (min-width: 1398px) {

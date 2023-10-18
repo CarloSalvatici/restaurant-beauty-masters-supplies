@@ -2,6 +2,8 @@
     --main-title-color: #e6c11d;
     --ct-border-color: #e60004;
     --ct-bg-color: rgba(233, 186, 186, 0.4);
+    --category-expand-bg-color-hover: rgba(220, 219, 168, 0.4);
+    --mc-title-alternating-bg: rgba(239, 239, 239, 0.5);
 }
 
 @font-face{
