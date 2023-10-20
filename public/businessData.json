@@ -1,123 +1,20 @@
 {
     "pageData": {
-        "mainTitle": "Test Website",
-        "phoneNumber": "4692586258",
-        "phoneNumberFormatted": "(469) 358-6358",
+        "mainTitle": "Beauty Masters Supplies",
+        "phoneNumber": "9094655412",
+        "phoneNumberFormatted": "(909) 465-5412",
         "address": "1234 SW 1st St, Gainesville, FL",
         "addressLink": "https://goo.gl/maps/RU3PW9xjWJwV444F7",
-        "businessHours": "Dine In or Carry Out from 10:00AM - 8:00PM, Closed Sunday",
-        "footerText": "This restaurant is part of coorporation #168. All transactions are final, so no takesies backsies.",
-        "aboutTitle": "Ciao!",
+        "businessHours": "Mon-Saturday 9:30AM - 7:30PM, Sunday 12PM-6:30PM",
+        "footerText": "We loOOOooVe Our customers!",
+        "aboutTitle": "Welcome!",
         "aboutParagraph": "Open since 1913, this restaurant has been a staple of the community serving gourmet family recipes. Mr. Clark founded this restaurant 13 years ago, just kidding I already said it was founded in 1913 silly goose! Anyways, unfortunately he died 13 years ago, but his passion for cooking inspired his descendents who don't really care as much, but still care and do enough to run a decent restaurant."
     },
-    "menu": [
+    "products": [
         {
-            "categoryTitle": "Appetizers",
-            "description": "",
-            "items": [
-                {
-                    "name": "Calamari",
-                    "description": "Crispy fried squid served with homemade marinara sauce.",
-                    "vegan": true,
-                    "price": "$8.99"
-                },
-                {
-                    "name": "Meatballs",
-                    "description": "Delicious homemade meatballs served with homemade marinara sauce topped with parmesan reggiano",
-                    "vegan": false,
-                    "price": "$8.99"
-                }
-            ]
-        },
-        {
-            "categoryTitle": "Pasta",
-            "description": "Delicious homemade pasta",
-            "items": [
-                {
-                    "name": "Spagetti",
-                    "description": "Beautiful homemade spagetti served with homemade marinara sauce topped with parmesan reggiano",
-                    "vegan": false,
-                    "price": "$12.99"
-                },
-                {
-                    "name": "Penne Alfredo",
-                    "description": "Beautiful homemade penne served with homemade alfredo sauce topped with parmesan reggiano",
-                    "vegan": false,
-                    "price": "$13.99"
-                }
-            ]
-        },
-        {
-            "categoryTitle": "Pizza",
-            "description": "Wonderful wood grilled pizza!",
-            "items": [
-                {
-                    "name": "Multi Cheese Pizza",
-                    "description": "Made with like 10 cheeses it will wow you to the max!!",
-                    "vegan": false,
-                    "price": "$10.99"
-                },
-                {
-                    "name": "Puppuroni Pizza",
-                    "description": "Its like pepperoni but the pepporonies are made with puppy meat!",
-                    "vegan": false,
-                    "price": "$17.99"
-                },
-                {
-                    "name": "Sausage Pizza",
-                    "description": "Made with freshly baked sausage! Also includes onions.",
-                    "vegan": false,
-                    "price": "$12.99"
-                },
-                {
-                    "name": "Diamond Pizza",
-                    "description": "Just like our Multi Cheese Pizza, but topped with REAL diamond shavings! Probably not good for your intestines but if you order this your friends will surely be impressed!",
-                    "vegan": false,
-                    "price": "$199.99"
-                },
-                {
-                    "name": "Special Ed Pizza",
-                    "description": "The owners daughter has seriously debilitating autism but loves to make pizza! You never know what you'll get with this one!",
-                    "vegan": false,
-                    "price": "$13.99"
-                }
-            ]
-        },
-        {
-            "categoryTitle": "Salads",
-            "description": "Fresh, delicious salads!",
-            "items": [
-                {
-                    "name": "Store Bought Salad",
-                    "description": "We got that mediterranian bagged salad from target and sell it to you at double price! We didn't specifiy is it was fresh and delicious or fresh or delicious...",
-                    "vegan": false,
-                    "price": "$19.99"
-                },
-                {
-                    "name": "Garden Salad",
-                    "description": "The vegetables are literally from the garden out back and it takes a long ass time to grow them so yeah. Inquire for more details.",
-                    "vegan": false,
-                    "price": "$25.99"
-                },
-                {
-                    "name": "Mediterranean Salad",
-                    "description": "Self explanitory",
-                    "vegan": false,
-                    "price": "$12.99"
-                }
-            ]
-        },
-        {
-            "categoryTitle": "Desert",
-            "description": "",
-            "items": [
-                {
-                    "name": "Tiramisu",
-                    "description": "It's like coffee cake",
-                    "vegan": false,
-                    "price": "$3.99"
-                }
-            ]
+            "name": "Make-Up",
+            "descriptions": "Plenty of options by this brand, that brand, and this other brand",
+            "image": ""
         }
     ]
 }
