@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte'
-    export let menu
+    export let products
     
     $: innerWidth = 0
 
@@ -31,41 +31,13 @@
 <svelte:window bind:innerWidth />
 
 <main>
-    <div id="menu" class="menu">
-        <div class="menu-category-titles">
-			<div class="mc-img">
-				<img id="mc-img-id" src="images/decorative/vine.png" alt="vine"/>
-			</div>
-            {#if innerWidth < 700}
-                <button class="mc-toggle py-1 px-3" on:click={mcToggle}>
-                    <h2 class="mt-2">
-                        {#if displayCategories == true}Collapse Categories <img class="mc-expand" src="./images/expand-arrow-up.png" alt="Expand Arrow">{/if}
-                        {#if displayCategories == false}View Categories <img class="mc-expand" src="./images/expand-arrow-down.png" alt="Expand Arrow">{/if}
-                    </h2>
-                </button>
-            {/if}
-            {#if displayCategories == true || innerWidth > 699}
-                {#each menu as data}
-                    <button class="mc-title p-1 pb-2 mt-1 {displayedCategory === menu.indexOf(data) ? 'selected' : ''}" on:click={() => changeCategory(menu.indexOf(data))}>
-                        <h2 class="mb-0">{data.categoryTitle}</h2>
-                    </button>
-                {/each}
-            {/if}
-        </div>
-        <div class="menu-category-contents">
-            {#if innerWidth < 701}
-                <h2 class="mc-mobile-title pt-4 mb-0">{menu[displayedCategory].categoryTitle}</h2>
-            {/if}
-            {#if menu[displayedCategory].description != undefined && menu[displayedCategory].description != ""}
-                <span>{menu[displayedCategory].description}</span>
-                <hr>
-            {/if}
+    <div id="products" class="products">
+        <div class="products-category-contents">
             <div class="mc-item-list">
-                {#each menu[displayedCategory].items as data}
+                {#each products as data}
                         <div class="mc-item py-3">
                             <h3>{data.name}</h3>
-                            <span>{data.description} {data.price}</span>
-                            {#if data.vegan} <img src="./images/veganSm.png" alt="Vegan"> {/if}
+                            <span>{data.description}</span>
                         </div>
                 {/each}
             </div>
@@ -79,15 +51,15 @@
 		font-size: 2em;
 	}
 
-	.menu {
+	.products {
 		display: flex;
 	}
 
-	.menu-category-titles {
+	.products-category-titles {
 		position: relative;
 	}
 
-	.menu-category-contents {
+	.products-category-contents {
 		flex-grow: 1;
 	}
 
@@ -173,14 +145,14 @@
 	}
 
 	@media (max-width: 1499px){
-		.menu-category-titles {
+		.products-category-titles {
 			min-width: 300px;
 			max-width: 300px;
 		}
 	}
 
 	@media (min-width: 1500px) {
-		.menu-category-titles {
+		.products-category-titles {
 			min-width: 400px;
 			max-width: 400px;
 		}
@@ -198,10 +170,10 @@
 	}
 
 	@media (max-width: 699px) {
-		.menu {
+		.products {
 			display: block;
 		}
-		.menu-category-titles {
+		.products-category-titles {
 			margin: auto;
 			min-width: 100%;
 			max-width: 100%;

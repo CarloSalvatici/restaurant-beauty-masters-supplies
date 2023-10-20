@@ -2,7 +2,7 @@
 	import axios from "axios"
 	import { onMount } from 'svelte'
 	import localBusinessData from '../public/businessData.json';
-	import Menu from './sections/Menu.svelte'
+	import Products from './sections/Products.svelte'
 	import Gallery from './sections/Gallery.svelte'
 	import About from './sections/About.svelte'
 	import Lower from './sections/Lower.svelte'
@@ -17,7 +17,7 @@
 	let scrollAnchor = 0
 	let hideNav = true
 
-	let menu = localBusinessData.menu
+	let products = localBusinessData.products
 	let galleryData = []
 	let pageData = localBusinessData.pageData
 	let navStickyPos = 100000;
@@ -38,7 +38,7 @@
 		});
 		try {
 			let res = await axios.get(url, {params: {getType: "getBusinessDataOf", businessName: "Test Document"}})
-			menu = res.data.businessData.menu
+			products = res.data.businessData.products
 			galleryData = res.data.businessData.gallery
 			console.log(res.data.msg)
 			loading = false
@@ -60,7 +60,7 @@
 	<header class="pt-5 {scrollY >= navStickyPos ? 'sticky-header-padding' : ''}">
 		<div class="title my-2 mb-4">
 			<h1 class="title-text my-0 me-3"><strong>{pageData.mainTitle}</strong></h1>
-			<img class="logo-image" src="favicon.png" alt="Rigatini">
+			<!--<img class="logo-image" src="favicon.png" alt="Rigatini">-->
 		</div>
 		<h4 class="phone-number"><a href="tel:{pageData.phoneNumber}">{pageData.phoneNumberFormatted}</a></h4>
 		<address>
@@ -76,8 +76,8 @@
 				<button on:click={() => {scrollToSection("about")}}>
 					<h3 class="p-2 mb-0">About</h3>
 				</button>
-				<button on:click={() => {scrollToSection("menu")}}>
-					<h3 class="p-2 mb-0">Menu</h3>
+				<button on:click={() => {scrollToSection("products")}}>
+					<h3 class="p-2 mb-0">Products</h3>
 				</button>
 				<button on:click={() => {scrollToSection("gallery")}}>
 					<h3 class="p-2 mb-0">Gallery</h3>
@@ -93,8 +93,8 @@
 			
 		</div>
 		<About pageData={pageData}/>
-		<h1 class="section-title">Menu</h1>
-		<Menu menu={menu}/>
+		<h1 class="section-title">Products</h1>
+		<Products products={products}/>
 		<h1 class="section-title"></h1>
 		{#if !loading}
 			<Gallery galleryData={galleryData}/>
@@ -251,6 +251,7 @@
 		vertical-align: middle;
 		color: var(--main-title-color);
 		font-family:titleFont;
+		max-width: 70%;
 	}
     /*EF233C*/
 
@@ -305,7 +306,7 @@
 
 
 
-	 /*menu takes up not the whole screen on larger window*/
+	 /*products takes up not the whole screen on larger window*/
 	 @media (max-width: 1649px) {
 		.content {
 			max-width: 100%
@@ -323,7 +324,9 @@
 	}
 	/* Below 800px*/
 	@media (max-width: 800px) {
-
+		.title-text{
+			max-width: 100%;
+		}
 	}
 
 	/* Below 600px */

@@ -7,13 +7,13 @@
         "addressLink": "https://goo.gl/maps/RU3PW9xjWJwV444F7",
         "businessHours": "Mon-Saturday 9:30AM - 7:30PM, Sunday 12PM-6:30PM",
         "footerText": "We loOOOooVe Our customers!",
-        "aboutTitle": "Welcome!",
+        "aboutTitle": "You got plans?",
         "aboutParagraph": "Open since 1913, this restaurant has been a staple of the community serving gourmet family recipes. Mr. Clark founded this restaurant 13 years ago, just kidding I already said it was founded in 1913 silly goose! Anyways, unfortunately he died 13 years ago, but his passion for cooking inspired his descendents who don't really care as much, but still care and do enough to run a decent restaurant."
     },
     "products": [
         {
             "name": "Make-Up",
-            "descriptions": "Plenty of options by this brand, that brand, and this other brand",
+            "description": "Plenty of options by this brand, that brand, and this other brand",
             "image": ""
         }
     ]
